@@ -1,11 +1,11 @@
 // frontend/src/utils/customAxios.js
 import axios from "axios";
 
-// Base URL của backend
-const REACT_APP_API_URL = "http://localhost:5000/api/v1";
+// Sử dụng biến môi trường Vite để lấy URL backend
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
 
 const customAxios = axios.create({
-    baseURL: REACT_APP_API_URL, // URL backend
+    baseURL: API_URL, // URL backend
     withCredentials: true, // Gửi cookie trong mọi request
 });
 
@@ -24,6 +24,7 @@ const processQueue = (error, token = null) => {
     });
     failedQueue = [];
 };
+
 // Interceptor cho request: Thêm accessToken vào header
 customAxios.interceptors.request.use(
     (config) => {
@@ -61,7 +62,7 @@ customAxios.interceptors.response.use(
             error.response?.status === 401 &&
             !originalRequest._retry &&
             error.config.url !== "/auth/refresh-token" &&
-            error.config.url !== "/auth/login" // Thêm kiểm tra này
+            error.config.url !== "/auth/login"
         ) {
             if (isRefreshing) {
                 // Nếu đang làm mới token, đưa request vào hàng đợi
@@ -81,7 +82,7 @@ customAxios.interceptors.response.use(
             try {
                 console.log("Refreshing token...");
                 const response = await axios.post(
-                    `${REACT_APP_API_URL || "http://localhost:5000/api/v1"}/auth/refresh-token`,
+                    `${API_URL}/auth/refresh-token`,
                     {},
                     { withCredentials: true }
                 );
