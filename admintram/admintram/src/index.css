@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
+@import "antd/dist/reset.css";
+@import "tailwindcss";
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+.dark .gradient-bg {
+    background: linear-gradient(135deg, #1f2937, #111827);
+}

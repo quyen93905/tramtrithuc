@@ -1,0 +1,14 @@
+@import "antd/dist/reset.css";
+@import "tailwindcss";
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+.dark .gradient-bg {
+    background: linear-gradient(135deg, #1f2937, #111827);
+}
