@@ -1,8 +1,12 @@
 // frontend/src/utils/customAxios.js
 import axios from "axios";
 
-// Sử dụng biến môi trường Vite để lấy URL backend
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
+
+const customAxios = axios.create({
+    baseURL: API_URL,
+    withCredentials: true,
+});
 
 const customAxios = axios.create({
     baseURL: API_URL, // URL backend
