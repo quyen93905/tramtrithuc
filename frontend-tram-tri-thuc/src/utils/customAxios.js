@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Base URL của backend
-const REACT_APP_API_URL = "http://localhost:5000/api/v1";
+const REACT_APP_API_URL = "https://be-fg2g.onrender.com/api/v1";
 
 const customAxios = axios.create({
     baseURL: REACT_APP_API_URL, // URL backend
